@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!--
+  Content Security Policy.
+  Locks the page down to its own assets + Google Fonts only.
+  If you later add a form backend (Formspree etc.), add its origin to connect-src.
+  frame-ancestors / X-Frame-Options are set in the _headers file (meta tags can't set them).
+-->
+<meta http-equiv="Content-Security-Policy" content="
+  default-src 'self';
+  base-uri 'self';
+  form-action 'self';
+  object-src 'none';
+  img-src 'self' data:;
+  script-src 'self';
+  style-src 'self' https://fonts.googleapis.com;
+  font-src 'self' https://fonts.gstatic.com;
+  connect-src 'self';
+">
+<!--
+  upgrade-insecure-requests is intentionally left out of this meta tag.
+  Safari applies it more aggressively than Chrome and will try to upgrade
+  every asset request (CSS/JS/fonts) to https:// even on http://localhost,
+  which breaks local testing since there's no TLS server there.
+  It's still set in _headers for the real deployment, where the site is
+  already served over HTTPS and the directive is a harmless no-op.
+-->
+<meta name="referrer" content="strict-origin-when-cross-origin">
+
+<title>GrowTheory — Digital Marketing Agency | Strategy, Creativity, Growth</title>
+<meta name="description" content="GrowTheory is a Cleveland-based digital marketing agency helping brands grow with smart strategy, creative content, paid ads and standout design. Serving clients worldwide.">
+<link rel="canonical" href="https://growtheory.us/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="GrowTheory">
+<meta property="og:title" content="GrowTheory — Turning Ideas Into Real Growth">
+<meta property="og:description" content="Strategy, creativity and growth for brands that want to stand out. Social media, paid ads, branding, content and websites.">
+<meta property="og:url" content="https://growtheory.us/">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="bg-decor" aria-hidden="true">
+  <span class="blob blob--1"></span>
+  <span class="blob blob--2"></span>
+  <span class="blob blob--3"></span>
+</div>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header" id="siteHeader">
+  <div class="shell site-header__inner">
+    <a class="brand" href="#top" aria-label="GrowTheory home">
+      <svg class="brand__mark" viewBox="0 0 100 100" role="img" aria-hidden="true" focusable="false">
+        <defs>
+          <linearGradient id="gtNav" x1="0" y1="1" x2="1" y2="0">
+            <stop offset="0%" stop-color="#5B5BD6"/>
+            <stop offset="52%" stop-color="#9B6BD8"/>
+            <stop offset="100%" stop-color="#E87FA8"/>
+          </linearGradient>
+        </defs>
+        <g fill="none" stroke="url(#gtNav)" stroke-width="13" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M80.1 39.1 A32 32 0 1 1 72.6 27.4"/>
+          <path d="M40 64 L76 28"/>
+          <path d="M56 28 H76 V48"/>
+        </g>
+      </svg>
+      <span class="brand__text">
+        <span class="brand__name">Grow<em>Theory</em></span>
+        <span class="brand__sub">Digital Marketing Agency</span>
+      </span>
+    </a>
+
+    <nav class="nav" id="primaryNav" aria-label="Primary">
+      <a href="#services">Services</a>
+      <a href="#approach">Approach</a>
+      <a href="#process">Process</a>
+      <a href="#about">About</a>
+      <a class="btn btn--sm btn--primary nav__cta" href="#contact">Start a project</a>
+    </nav>
+
+    <button class="nav-toggle" id="navToggle" type="button"
+            aria-expanded="false" aria-controls="primaryNav" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="top">
+    <div class="shell hero__grid">
+      <div class="hero__copy">
+        <p class="eyebrow reveal">Strategy <span>•</span> Creativity <span>•</span> Growth</p>
+
+        <h1 class="hero__title reveal">
+          Turning ideas into
+          <span class="grad">real growth.</span>
+        </h1>
+
+        <p class="hero__lead reveal">
+          GrowTheory is more than a marketing agency. It's where sharp strategy meets
+          creative work that actually moves numbers — so your brand doesn't just show up,
+          it stands out.
+        </p>
+
+        <div class="hero__actions reveal">
+          <a class="btn btn--primary" href="#contact">Get a free strategy call</a>
+          <a class="btn btn--ghost" href="#services">See what we do</a>
+        </div>
+
+        <ul class="hero__points reveal">
+          <li>No lock-in contracts</li>
+          <li>Real-time reporting</li>
+          <li>Cleveland, OH — serving worldwide</li>
+        </ul>
+      </div>
+
+      <div class="hero__visual reveal" aria-hidden="true">
+        <div class="stage">
+          <div class="stage__glow"></div>
+          <svg class="stage__mark" viewBox="0 0 100 100" focusable="false">
+            <defs>
+              <linearGradient id="gtHero" x1="0" y1="1" x2="1" y2="0">
+                <stop offset="0%" stop-color="#5B5BD6"/>
+                <stop offset="52%" stop-color="#9B6BD8"/>
+                <stop offset="100%" stop-color="#F08DB5"/>
+              </linearGradient>
+            </defs>
+            <g fill="none" stroke="url(#gtHero)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M80.1 39.1 A32 32 0 1 1 72.6 27.4"/>
+              <path d="M40 64 L76 28"/>
+              <path d="M56 28 H76 V48"/>
+            </g>
+          </svg>
+          <div class="stage__disc"></div>
+        </div>
+
+        <div class="float-card float-card--pillars">
+          <p class="float-card__label">Our focus</p>
+          <ul class="mini-pillars">
+            <li>Strategy</li>
+            <li>Creativity</li>
+            <li>Growth</li>
+          </ul>
+        </div>
+
+        <div class="float-card float-card--badge">
+          <span class="spark">&#10022;</span>
+          <p>This is just the beginning.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PILLARS ============ -->
+  <section class="pillars" id="approach">
+    <div class="shell">
+      <div class="section-head section-head--center reveal">
+        <p class="eyebrow">Our focus</p>
+        <h2 class="section-title">The right <span class="grad">strategy</span> changes everything.</h2>
+        <p class="section-lead">
+          We help brands cut through the noise with smart strategy, creative thinking
+          and consistent execution. Better strategy, stronger growth.
+        </p>
+      </div>
+
+      <div class="pillar-grid">
+        <article class="pillar reveal">
+          <span class="pillar__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4"/>
+            </svg>
+          </span>
+          <h3>Strategy</h3>
+          <p>Smart plans that create direction. We start with your market, your margins and your goals — not a template.</p>
+        </article>
+
+        <article class="pillar reveal">
+          <span class="pillar__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 18h6M10 21h4"/>
+              <path d="M12 3a6 6 0 0 0-3.6 10.8c.5.4.8 1 .9 1.6h5.4c.1-.6.4-1.2.9-1.6A6 6 0 0 0 12 3Z"/>
+            </svg>
+          </span>
+          <h3>Creativity</h3>
+          <p>Ideas that connect and inspire. Scroll-stopping creative built to earn attention, then convert it.</p>
+        </article>
+
+        <article class="pillar reveal">
+          <span class="pillar__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 21h18"/><path d="M6 21V12M11 21V7M16 21V14M21 21V4"/>
+            </svg>
+          </span>
+          <h3>Growth</h3>
+          <p>Results that matter and last. Every campaign ties back to a number you actually care about.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICES ============ -->
+  <section class="services" id="services">
+    <div class="shell">
+      <div class="section-head reveal">
+        <p class="eyebrow">What we do</p>
+        <h2 class="section-title">Everything your brand needs to <span class="grad">grow.</span></h2>
+        <p class="section-lead">
+          Pick one service or run the whole engine with us — it all plugs into the same strategy.
+        </p>
+      </div>
+
+      <div class="service-grid">
+        <article class="card reveal">
+          <span class="card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 11v2a1 1 0 0 0 1 1h2l4 3.5V6.5L6 10H4a1 1 0 0 0-1 1Z"/>
+              <path d="M14 8.5a4 4 0 0 1 0 7M17 6a7 7 0 0 1 0 12"/>
+            </svg>
+          </span>
+          <h3>Social Media <em>Marketing</em></h3>
+          <p>Build your brand presence and engage the right audience with content and community management that compounds.</p>
+        </article>
+
+        <article class="card reveal">
+          <span class="card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="13" r="8"/><circle cx="11" cy="13" r="3.5"/>
+              <path d="M13.5 10.5 21 3M17 3h4v4"/>
+            </svg>
+          </span>
+          <h3>Paid Ads <em>Management</em></h3>
+          <p>Performance-driven campaigns across Meta and Google that deliver real results — tracked, tested and scaled.</p>
+        </article>
+
+        <article class="card reveal">
+          <span class="card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3 5 8v8l7 5 7-5V8l-7-5Z"/><path d="M12 21V12M12 12 5 8M12 12l7-4"/>
+            </svg>
+          </span>
+          <h3>Branding <em>&amp; Design</em></h3>
+          <p>Create a unique identity that makes your brand unforgettable — logo, system, voice and the rules that keep it consistent.</p>
+        </article>
+
+        <article class="card reveal">
+          <span class="card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="6" width="12" height="12" rx="2.5"/><path d="m15 11 6-3.5v9L15 13Z"/>
+            </svg>
+          </span>
+          <h3>Content <em>Creation</em></h3>
+          <p>Creative content that connects, converts and creates impact — short-form video, photo, copy and everything between.</p>
+        </article>
+
+        <article class="card reveal">
+          <span class="card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2.5" y="4" width="19" height="14" rx="2.5"/><path d="M2.5 8.5h19M6 21h12"/>
+            </svg>
+          </span>
+          <h3>Web Design <em>&amp; Build</em></h3>
+          <p>Fast, secure, conversion-focused websites and landing pages that make the rest of your marketing work harder.</p>
+        </article>
+
+        <article class="card reveal">
+          <span class="card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 3v18h18"/><path d="m7 15 4-5 3 3 5-7"/>
+            </svg>
+          </span>
+          <h3>SEO <em>&amp; Analytics</em></h3>
+          <p>Get found, then prove it. Technical SEO, content strategy and dashboards that show exactly where growth comes from.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MANIFESTO ============ -->
+  <section class="manifesto">
+    <div class="shell">
+      <div class="manifesto__inner reveal">
+        <p class="eyebrow">Our story</p>
+        <h2 class="manifesto__title">Every great brand starts <span class="grad">somewhere.</span></h2>
+        <p class="manifesto__body">
+          GrowTheory isn't built overnight. It started with one idea: helping businesses
+          grow with strategy, creativity and growth. We're building this agency the same
+          way we build brands — deliberately, in the open, and with work we're happy to
+          put our name on.
+        </p>
+        <p class="manifesto__pill"><span aria-hidden="true">&#10022;</span> This is just the beginning.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROCESS ============ -->
+  <section class="process" id="process">
+    <div class="shell">
+      <div class="section-head reveal">
+        <p class="eyebrow">How we work</p>
+        <h2 class="section-title">A clear path from <span class="grad">idea to impact.</span></h2>
+      </div>
+
+      <ol class="steps">
+        <li class="step reveal">
+          <span class="step__num">01</span>
+          <h3>Discover</h3>
+          <p>We dig into your business, audience and competitors to find the real bottleneck — not the obvious one.</p>
+        </li>
+        <li class="step reveal">
+          <span class="step__num">02</span>
+          <h3>Strategise</h3>
+          <p>You get a written plan: channels, messaging, budget and the metrics we'll be judged on.</p>
+        </li>
+        <li class="step reveal">
+          <span class="step__num">03</span>
+          <h3>Create</h3>
+          <p>Design, copy and content get built and shipped fast, then tested against live audience data.</p>
+        </li>
+        <li class="step reveal">
+          <span class="step__num">04</span>
+          <h3>Scale</h3>
+          <p>What works gets more budget, what doesn't gets cut. The dashboard doesn't lie.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="about" id="about">
+    <div class="shell about__grid">
+      <div class="about__copy reveal">
+        <p class="eyebrow">The journey begins</p>
+        <h2 class="section-title">Ideas. <span class="grad">Strategy.</span> Growth.</h2>
+        <p>
+          GrowTheory wasn't built overnight. It started with one idea: help businesses
+          grow with strategy, creativity and growth — in that order.
+        </p>
+        <p>
+          We're a small, senior team based on Euclid Ave in Cleveland, Ohio, working with
+          founders and marketing leads around the world. Small enough that you talk to the
+          people doing the work, experienced enough to know what actually moves a number.
+        </p>
+        <a class="btn btn--primary" href="#contact">Work with us</a>
+      </div>
+
+      <aside class="about__panel reveal">
+        <h3>Why teams pick us</h3>
+        <ul class="ticks">
+          <li>Senior people on your account — not juniors learning on your budget</li>
+          <li>Plain-English reporting you can forward to your boss</li>
+          <li>Strategy first, so creative has something to aim at</li>
+          <li>No lock-in contracts, cancel with 30 days' notice</li>
+        </ul>
+        <p class="about__quote">
+          &ldquo;Better strategy. <span class="grad">Stronger growth.</span>&rdquo;
+        </p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="contact" id="contact">
+    <div class="shell">
+      <div class="contact__card reveal">
+        <p class="eyebrow">Let's talk</p>
+        <h2 class="section-title">Tell us what you're <span class="grad">building.</span></h2>
+        <p class="section-lead">
+          Send us a line about your business and what you're trying to grow. We'll come
+          back within one business day with honest thoughts — whether or not we're the
+          right fit.
+        </p>
+
+        <a class="btn btn--primary btn--lg contact__cta"
+           href="mailto:founder@growtheory-us.com?subject=New%20project%20enquiry">
+          Email us
+        </a>
+        <p class="contact__addr">founder@growtheory-us.com</p>
+
+        <ul class="contact__meta">
+          <li>
+            <span class="contact__meta-label">Studio</span>
+            <span>Euclid Ave, Cleveland, Ohio</span>
+          </li>
+          <li>
+            <span class="contact__meta-label">Instagram</span>
+            <a href="https://www.instagram.com/growtheory.us/" target="_blank" rel="noopener noreferrer">@growtheory.us</a>
+          </li>
+          <li>
+            <span class="contact__meta-label">Hours</span>
+            <span>Mon&ndash;Fri, 9&ndash;6 ET</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="shell site-footer__inner">
+    <div class="site-footer__brand">
+      <svg class="brand__mark" viewBox="0 0 100 100" role="img" aria-hidden="true" focusable="false">
+        <defs>
+          <linearGradient id="gtFoot" x1="0" y1="1" x2="1" y2="0">
+            <stop offset="0%" stop-color="#5B5BD6"/>
+            <stop offset="52%" stop-color="#9B6BD8"/>
+            <stop offset="100%" stop-color="#E87FA8"/>
+          </linearGradient>
+        </defs>
+        <g fill="none" stroke="url(#gtFoot)" stroke-width="13" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M80.1 39.1 A32 32 0 1 1 72.6 27.4"/>
+          <path d="M40 64 L76 28"/>
+          <path d="M56 28 H76 V48"/>
+        </g>
+      </svg>
+      <p class="brand__name">Grow<em>Theory</em></p>
+      <p class="site-footer__tag">Helping businesses grow with smart marketing.</p>
+    </div>
+
+    <nav class="site-footer__links" aria-label="Footer">
+      <a href="#services">Services</a>
+      <a href="#approach">Approach</a>
+      <a href="#process">Process</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+
+  <div class="shell site-footer__bar">
+    <p class="rule" aria-hidden="true"></p>
+    <p class="site-footer__legal">
+      &copy; <span id="year">2026</span> GrowTheory &middot; Cleveland, Ohio
+    </p>
+    <p class="site-footer__pillars">Strategy <span>•</span> Creativity <span>•</span> Growth</p>
+  </div>
+</footer>
+
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>

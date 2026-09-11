@@ -1,0 +1,24 @@
+# macOS
+.DS_Store
+._*
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Secrets — never commit these. If you add a form backend later, keep its
+# API key in your host's environment settings, not in this repo.
+.env
+.env.*
+*.pem
+*.key
+
+# Deploy / tooling
+node_modules/
+.netlify/
+.vercel/
+
+# Local design references (Instagram screenshots etc.) — not part of the
+# site and not meant for a public repo history.
+reference_images/

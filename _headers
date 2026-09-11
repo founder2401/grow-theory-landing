@@ -1,0 +1,26 @@
+# Security headers for Netlify / Cloudflare Pages.
+# These are the real thing — the <meta> CSP in index.html is only a fallback
+# for hosts that can't set headers. Headers win where both are present.
+#
+# If you deploy somewhere else, see README.md for the nginx / Apache / Vercel
+# equivalents. Do not skip this file: several of these headers (notably
+# frame-ancestors and HSTS) CANNOT be set from a meta tag.
+
+/*
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; object-src 'none'; img-src 'self' data:; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self'; upgrade-insecure-requests
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), interest-cohort=()
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Resource-Policy: same-origin
+  X-DNS-Prefetch-Control: off
+
+# Long-cache fingerprint-free static assets, but let HTML revalidate so
+# content edits go live immediately.
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/
+  Cache-Control: public, max-age=0, must-revalidate
