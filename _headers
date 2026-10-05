@@ -7,19 +7,26 @@
 # frame-ancestors and HSTS) CANNOT be set from a meta tag.
 
 /*
-  Content-Security-Policy: default-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; object-src 'none'; img-src 'self' data:; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self'; upgrade-insecure-requests
-  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  Content-Security-Policy: default-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'; object-src 'none'; img-src 'self' data:; script-src 'self'; style-src 'self'; font-src 'self'; connect-src 'none'; manifest-src 'self'; frame-src 'none'; worker-src 'none'; media-src 'none'; require-trusted-types-for 'script'; upgrade-insecure-requests
+  Strict-Transport-Security: max-age=63072000; includeSubDomains
   X-Content-Type-Options: nosniff
   X-Frame-Options: DENY
   Referrer-Policy: strict-origin-when-cross-origin
-  Permissions-Policy: accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), interest-cohort=()
+  Permissions-Policy: accelerometer=(), ambient-light-sensor=(), autoplay=(), bluetooth=(), browsing-topics=(), camera=(), display-capture=(), geolocation=(), gyroscope=(), hid=(), idle-detection=(), magnetometer=(), microphone=(), midi=(), payment=(), publickey-credentials-get=(), screen-wake-lock=(), serial=(), usb=(), web-share=(), xr-spatial-tracking=()
   Cross-Origin-Opener-Policy: same-origin
   Cross-Origin-Resource-Policy: same-origin
+  Cross-Origin-Embedder-Policy: require-corp
+  X-Permitted-Cross-Domain-Policies: none
   X-DNS-Prefetch-Control: off
 
-# Long-cache fingerprint-free static assets, but let HTML revalidate so
-# content edits go live immediately.
+# CSS/JS are not fingerprinted, so they must NOT be marked immutable — a
+# one-year immutable cache would stop fixes (including security fixes) from
+# ever reaching returning visitors. Revalidate cheaply instead.
 /assets/*
+  Cache-Control: public, max-age=3600, must-revalidate
+
+# Font files never change once published.
+/assets/fonts/*
   Cache-Control: public, max-age=31536000, immutable
 
 /

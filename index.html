@@ -5,21 +5,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!--
-  Content Security Policy.
-  Locks the page down to its own assets + Google Fonts only.
-  If you later add a form backend (Formspree etc.), add its origin to connect-src.
-  frame-ancestors / X-Frame-Options are set in the _headers file (meta tags can't set them).
+  Content Security Policy (fallback for hosts that can't set headers; the
+  _headers file is authoritative). Everything is same-origin: no third-party
+  scripts, styles, fonts or images. frame-ancestors can't be set from a meta
+  tag, so it lives in _headers only.
 -->
 <meta http-equiv="Content-Security-Policy" content="
-  default-src 'self';
-  base-uri 'self';
-  form-action 'self';
+  default-src 'none';
+  base-uri 'none';
+  form-action 'none';
   object-src 'none';
   img-src 'self' data:;
   script-src 'self';
-  style-src 'self' https://fonts.googleapis.com;
-  font-src 'self' https://fonts.gstatic.com;
-  connect-src 'self';
+  style-src 'self';
+  font-src 'self';
+  connect-src 'none';
+  manifest-src 'self';
+  frame-src 'none';
+  worker-src 'none';
+  media-src 'none';
+  require-trusted-types-for 'script';
 ">
 <!--
   upgrade-insecure-requests is intentionally left out of this meta tag.
@@ -43,9 +48,7 @@
 <meta name="twitter:card" content="summary_large_image">
 
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="assets/fonts/fonts.css">
 <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>

@@ -29,6 +29,7 @@ index.html              all markup and page copy
 assets/css/styles.css   all styling
 assets/js/main.js       sticky header, mobile nav, scroll reveal
 assets/img/favicon.svg  logo mark
+assets/fonts/           self-hosted woff2 files + fonts.css
 _headers                security headers for Netlify / Cloudflare Pages
 ```
 
@@ -154,6 +155,6 @@ Copy the same header names and values from `_headers`.
 - Honours `prefers-reduced-motion` — all animation is disabled for visitors who
   ask for that.
 - Responsive from 320px up; no horizontal scroll.
-- Google Fonts is the only external request. To drop it entirely, download the
-  two font families into `assets/fonts/`, `@font-face` them locally, and remove
-  `fonts.googleapis.com` / `fonts.gstatic.com` from both CSP declarations.
+- Fonts (Inter, Playfair Display) are self-hosted in `assets/fonts/`, so the
+  page makes **zero third-party requests** — no visitor IPs leak to Google and
+  the CSP allows only same-origin resources.
